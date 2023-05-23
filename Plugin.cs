@@ -68,7 +68,7 @@ namespace Mod1
                     }
                     if (isLeftHoldingTrigger)
                     {
-                        GorillaLocomotion.Player.Instance.transform.localScale *= -.98f;
+                        GorillaLocomotion.Player.Instance.transform.localScale *= .98f;
                     }
 
 
