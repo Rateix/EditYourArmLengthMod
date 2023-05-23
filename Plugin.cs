@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using Utilla;
 using UnityEngine.XR;
@@ -64,12 +64,17 @@ namespace Mod1
                     if (isRightHoldingTrigger)
                     {
                         GorillaLocomotion.Player.Instance.transform.localScale *= 1.02f;
-
+                        if (GorillaLocomotion.Player.Instance.transform.localScale.x > 3f)
+                            GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(3f, 3f, 3f);
                     }
+
                     if (isLeftHoldingTrigger)
                     {
-                        GorillaLocomotion.Player.Instance.transform.localScale *= .98f;
+                        GorillaLocomotion.Player.Instance.transform.localScale *= -0.98f;
+                        if (GorillaLocomotion.Player.Instance.transform.localScale.x < 0.2f)
+                            GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                     }
+
 
 
                 }
