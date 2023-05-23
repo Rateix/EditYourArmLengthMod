@@ -43,6 +43,7 @@ namespace Mod1
 
         private void OnDisable()
         {
+            GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(1f, 1f, 1f);
             willBeOn = false;
 
             HarmonyPatches.RemoveHarmonyPatches();
