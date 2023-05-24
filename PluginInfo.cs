@@ -1,4 +1,4 @@
-﻿namespace Mod1
+namespace Mod1
 {
     /// <summary>
     /// This class is used to provide information about your mod to BepInEx.
@@ -7,6 +7,6 @@
     {
         public const string GUID = "com.rateixvr.gorillatag.editarmlength";
         public const string Name = "EditArmLength";
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.3";
     }
 }
