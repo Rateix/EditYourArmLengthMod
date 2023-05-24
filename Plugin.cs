@@ -44,6 +44,7 @@ namespace Mod1
         private void OnDisable()
         {
             GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(1f, 1f, 1f);
+
             willBeOn = false;
 
             HarmonyPatches.RemoveHarmonyPatches();
@@ -56,25 +57,29 @@ namespace Mod1
 
         private void Update()
         {
-            if (inRoom)
+            if (inRoom && willBeOn)
             {
-                if (willBeOn)
-                {
                     InputDevices.GetDeviceAtXRNode(XRNode.RightHand).TryGetFeatureValue(CommonUsages.triggerButton, out isRightHoldingTrigger);
                     InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.triggerButton, out isLeftHoldingTrigger);
                     if (isRightHoldingTrigger)
                     {
-                        GorillaLocomotion.Player.Instance.transform.localScale *= 1.02f;
-                        if (GorillaLocomotion.Player.Instance.transform.localScale.x > 3f)
-                            GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(3f, 3f, 3f);
+                    GorillaLocomotion.Player.Instance.transform.localScale += new Vector3(0.02f, 0.02f, 0.02f);
+                    if (GorillaLocomotion.Player.Instance.transform.localScale.x > 3f)
+                    {
+                        GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(3f, 3f, 3f);
+                    }
                     }
 
                     if (isLeftHoldingTrigger)
                     {
-                        GorillaLocomotion.Player.Instance.transform.localScale *= -0.98f;
-                        if (GorillaLocomotion.Player.Instance.transform.localScale.x < 0.2f)
-                            GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        GorillaLocomotion.Player.Instance.transform.localScale -= new Vector3(0.02f, 0.02f, 0.02f);
+                    if (GorillaLocomotion.Player.Instance.transform.localScale.x < 0.2f)
+                    {
+                        GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
                     }
+
+                    
 
 
 
