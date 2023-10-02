@@ -26,7 +26,7 @@ namespace Mod1
         {
             if (inRoom)
             {
-                if (ControllerInputPoller.instance.rightGrab)
+                if (ControllerInputPoller.instance.rightControllerIndexFloat > 0)
                 {
                     GorillaLocomotion.Player.Instance.transform.localScale += new Vector3(0.02f, 0.02f, 0.02f);
                     if (GorillaLocomotion.Player.Instance.transform.localScale.x > 3f)
@@ -35,7 +35,7 @@ namespace Mod1
                     }
                 }
 
-                if (ControllerInputPoller.instance.leftGrab)
+                if (ControllerInputPoller.instance.leftControllerIndexFloat > 0)
                 {
                     GorillaLocomotion.Player.Instance.transform.localScale -= new Vector3(0.02f, 0.02f, 0.02f);
                     if (GorillaLocomotion.Player.Instance.transform.localScale.x < 0.2f)
