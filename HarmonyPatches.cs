@@ -2,7 +2,7 @@
 using System;
 using System.Reflection;
 
-namespace Mod1
+namespace EditArmLength
 {
     /// <summary>
     /// This class handles applying harmony patches to the game.
