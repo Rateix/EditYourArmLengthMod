@@ -1,4 +1,4 @@
-namespace Mod1
+namespace EditArmLength
 {
     /// <summary>
     /// This class is used to provide information about your mod to BepInEx.
