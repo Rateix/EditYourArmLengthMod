@@ -5,8 +5,8 @@ using BepInEx;
 
 namespace EditArmLength
 {
-    
-    [BepInDependency("org.legoandmars.gorillatag.utilla", "1.5.0")]
+
+    [BepInDependency("Lofiat.Newtilla", "1.1.0")]
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
