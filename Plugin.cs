@@ -1,12 +1,13 @@
 using UnityEngine;
-using Newtilla;
 using BepInEx;
+using System;
+using Photon.Pun;
 
 
 namespace EditArmLength
 {
 
-    [BepInDependency("Lofiat.Newtilla", "1.1.0")]
+
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
@@ -14,8 +15,11 @@ namespace EditArmLength
 
         void Start()
         {
-            Newtilla.Newtilla.OnJoinModded += OnModdedJoined;
-            Newtilla.Newtilla.OnLeaveModded += OnModdedLeft;
+
+        }
+        void OnGameInitialized(object sender, EventArgs e)
+        {
+
         }
 
         private void OnEnable()
@@ -28,8 +32,22 @@ namespace EditArmLength
             GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
+        private void OnModdedJoined()
+        {
+            if (inRoom == true) return;
+            inRoom = true;
+        }
+        private void OnModdedLeft()
+        {
+            if (inRoom == false) return;
+            inRoom = false;
+        }
+
         private void Update()
         {
+            if (!PhotonNetwork.InRoom) OnModdedJoined();
+            else if (!NetworkSystem.Instance.GameModeString.Contains("MODDED")) OnModdedLeft();
+
             if (inRoom)
             {
                 if (ControllerInputPoller.instance.rightControllerIndexFloat > 0)
@@ -50,20 +68,8 @@ namespace EditArmLength
                     }
                 }
             }
+            
         }
 
-
-        void OnModdedJoined(string modeName)
-        {
-            inRoom = true;
-        }
-
-
-        void OnModdedLeft(string modeName)
-        {
-            GorillaLocomotion.Player.Instance.transform.localScale = new Vector3(1f, 1f, 1f);
-
-            inRoom = false;
-        }
     }
 }
